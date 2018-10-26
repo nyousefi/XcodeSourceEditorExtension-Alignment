@@ -187,7 +187,7 @@
 				TargetAttributes = {
 					1E6C028F1D11C98C004D2B5E = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 97DS5G37YC;
+						DevelopmentTeam = P47A7RF6GS;
 						DevelopmentTeamName = "Atsushi Kiwaki";
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
@@ -202,7 +202,7 @@
 					};
 					1E6C02A51D11C995004D2B5E = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 97DS5G37YC;
+						DevelopmentTeam = P47A7RF6GS;
 						DevelopmentTeamName = "Atsushi Kiwaki";
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
@@ -407,7 +407,7 @@
 				CODE_SIGN_ENTITLEMENTS = AlignmentForXcode.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 97DS5G37YC;
+				DEVELOPMENT_TEAM = P47A7RF6GS;
 				INFOPLIST_FILE = "XcodeSourceEditorExtension-Alignment/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tid.Alignment-for-Xcode";
@@ -424,7 +424,7 @@
 				CODE_SIGN_ENTITLEMENTS = AlignmentForXcode.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 97DS5G37YC;
+				DEVELOPMENT_TEAM = P47A7RF6GS;
 				INFOPLIST_FILE = "XcodeSourceEditorExtension-Alignment/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tid.Alignment-for-Xcode";
@@ -439,7 +439,7 @@
 				CODE_SIGN_ENTITLEMENTS = Alignment/Alignment.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 97DS5G37YC;
+				DEVELOPMENT_TEAM = P47A7RF6GS;
 				INFOPLIST_FILE = Alignment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -456,7 +456,7 @@
 				CODE_SIGN_ENTITLEMENTS = Alignment/Alignment.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 97DS5G37YC;
+				DEVELOPMENT_TEAM = P47A7RF6GS;
 				INFOPLIST_FILE = Alignment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;

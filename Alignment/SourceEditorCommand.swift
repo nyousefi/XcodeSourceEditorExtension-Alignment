@@ -58,18 +58,23 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             }
 
             let range = result.range(at: 2)
-            if range.location != NSNotFound {
-                let repeatCount = alignPosition! - range.location + 1
-                if repeatCount != 0 {
-                    let whiteSpaces = String(repeating: " ", count: abs(repeatCount))
 
-                    if repeatCount > 0 {
-                        invocation.buffer.lines.replaceObject(at: index, with: line.replacingOccurrences(of: "=", with: "\(whiteSpaces)=", options: [.regularExpression], range: line.startIndex..<line.index(line.startIndex, offsetBy: range.location+1)))
-                    } else {
-                        invocation.buffer.lines.replaceObject(at: index, with: line.replacingOccurrences(of: "\(whiteSpaces)=", with: "="))
-                    }
-                }
-            }
+			guard range.location != NSNotFound else {
+				continue
+			}
+
+			let repeatCount = alignPosition! - range.location + 1
+
+			guard repeatCount != 0 else {
+				continue
+			}
+
+			let whiteSpaces = String(repeating: " ", count: abs(repeatCount))
+			if repeatCount > 0 {
+				invocation.buffer.lines.replaceObject(at: index, with: line.replacingOccurrences(of: "=", with: "\(whiteSpaces)=", options: [.regularExpression], range: line.startIndex..<line.index(line.startIndex, offsetBy: range.location+1)))
+			} else {
+				invocation.buffer.lines.replaceObject(at: index, with: line.replacingOccurrences(of: "\(whiteSpaces)=", with: "="))
+			}
         }
     }
 
@@ -88,22 +93,28 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         for index in selection.start.line ... selection.end.line {
             guard let line = invocation.buffer.lines[index] as? NSString else {
-                continue
-            }
+				continue
+			}
 
-            let range = line.range(of: ":")
-            if range.location != NSNotFound {
-                let repeatCount = alignPosition1! - range.location + 1
-                if repeatCount != 0 {
-                    let whiteSpaces = String(repeating: " ", count: abs(repeatCount))
+			let range = line.range(of: ":")
 
-                    if repeatCount > 0 {
-                        invocation.buffer.lines.replaceObject(at: index, with: line.replacingOccurrences(of: ":", with: "\(whiteSpaces):"))
-                    } else {
-                        invocation.buffer.lines.replaceObject(at: index, with: line.replacingOccurrences(of: "\(whiteSpaces):", with: ":"))
-                    }
-                }
-            }
+			guard range.location != NSNotFound else {
+				continue
+			}
+
+			let repeatCount = alignPosition1! - range.location + 1
+
+			guard repeatCount != 0 else {
+				continue
+			}
+
+			let whiteSpaces = String(repeating: " ", count: abs(repeatCount))
+
+			if repeatCount > 0 {
+				invocation.buffer.lines.replaceObject(at: index, with: line.replacingOccurrences(of: ":", with: "\(whiteSpaces):"))
+			} else {
+				invocation.buffer.lines.replaceObject(at: index, with: line.replacingOccurrences(of: "\(whiteSpaces):", with: ":"))
+			}
         }
     }
 }

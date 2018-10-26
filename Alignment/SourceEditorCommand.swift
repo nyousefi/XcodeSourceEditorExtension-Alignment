@@ -43,15 +43,27 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 		regex = try NSRegularExpression(pattern: "[^+^%^*^^^<^>^&^|^?^=^-](\\s*)(=)[^=]", options: .caseInsensitive)
 
 		let alignPosition = invocation.buffer.lines.enumerated().map { i, line -> Int in
-			guard i >= selection.start.line && i <= selection.end.line,
-				let line = line as? String,
-				let result = regex?.firstMatch(in: line, options: .reportProgress, range: NSRange(location: 0, length: line.count)) else {
-					return 0
+			guard
+				i >= selection.start.line,
+				i <= selection.end.line
+				else { return 0 }
+
+			if i == selection.end.line, selection.end.column == 0 {
+				return 0
 			}
+
+			guard
+				let line = line as? String,
+				let result = regex?.firstMatch(in: line, options: .reportProgress, range: NSRange(location: 0, length: line.count))
+				else { return 0 }
+
 			return result.range(at: 1).location
 			}.max()
 
-		for index in selection.start.line ... selection.end.line {
+		let start = selection.start.line
+		let end = selection.end.column > 0 ? selection.end.line : selection.end.line - 1
+
+		for index in start ... end {
 			guard let line = invocation.buffer.lines[index] as? String,
 				let result = regex?.firstMatch(in: line, options: .reportProgress, range: NSRange(location: 0, length: line.count)) else {
 					continue
@@ -89,6 +101,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 				let line = line as? String
 				else { return 0 }
 
+			if i == selection.end.line, selection.end.column == 0 {
+				return 0
+			}
+
 			let scanner = Scanner(string: line)
 			scanner.scanUpToCharacters(from: CharacterSet(charactersIn: "=("), into: nil)
 
@@ -99,7 +115,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 			return result.range(at: 2).location
 			}.max()
 
-		for index in selection.start.line ... selection.end.line {
+		let start = selection.start.line
+		let end = selection.end.column > 0 ? selection.end.line : selection.end.line - 1
+
+		for index in start ... end {
 			guard let line = invocation.buffer.lines[index] as? NSString else {
 				continue
 			}

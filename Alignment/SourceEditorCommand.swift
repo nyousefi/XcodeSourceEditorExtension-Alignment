@@ -23,9 +23,9 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 		let isEnableTypeDeclaration = def?.object(forKey: "KEY_ENABLE_TYPE_DECLARATION") as? Bool ?? false
 
 		do {
-			// if isEnableTypeDeclaration {
+			if isEnableTypeDeclaration {
 				try alignTypeDeclaration(invocation: invocation, selection: selection)
-			// }
+			}
 
 			if isEnableAssignment {
 				try alignAssignment(invocation: invocation, selection: selection)
